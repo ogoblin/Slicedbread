@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="projects">
+	<div style="margin-top: 70px; text-align: center;">
+		<h1>Projects List</h1>
+	</div>
+	{% if names %}
+	<div style="position:
+		fixed; top: 40%; left: 30%; width: 40%; padding: 12px 0; text-align:center;">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Logo</th>
+					<th>URL</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for n in names %}
+				<tr>
+					<td>1</td>
+					<td>
+					    {% if n.logo %}
+					    	<img src="{{ n.logo }}"  class="img-polaroid"/>
+						{%  endif %}
+					</td>
+					<td>
+					    {% if n.logo %}
+					        <a href="{{ n.url }}" class="btn btn-link">{{ n.url }}</a>
+						{%  endif %}
+					</td>
+					<td>{{ n.description }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+	<div style="position:
+		fixed; top: 40%; left: 30%; width: 40%; padding: 12px 0; text-align:center;">
+		<h2>Empty List</h2>
+	</div>
+	{% endif %}
+
+</section>
+
+<script type="text/javascript">
+	(function($) {
+		'use strict';
+		jQuery(document).ready(function($) {
+			sb.show_portal();
+		});
+	}(jQuery))
+</script>
+{% endblock %}

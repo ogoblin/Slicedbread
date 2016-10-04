@@ -1,0 +1,61 @@
+
+<script type="text/javascript">
+	(function($) {
+		'use strict';
+		jQuery(document)
+				.ready(
+						function($) {
+
+							$("body").queryLoader2(
+									{
+										showbar : true,
+										barColor : "#fe6159",
+										textColor : "#fe6159",
+										backgroundColor : "transparent",
+										barHeight : 3,
+										percentage : false,
+										completeAnimation : "fade",
+										minimumTime : 500,
+										onComplete : function() {
+											$(".brad-loader-overlay").fadeOut(
+													300, "easeInOutExpo");
+										}
+									});
+
+							var retina = window.devicePixelRatio > 1 ? true
+									: false;
+
+							/* ------------------------------------------------------------------------ */
+							/* Add PrettyPhoto */
+							/* ------------------------------------------------------------------------ */
+
+							var lightboxArgs = {
+								animation_speed : 'fast',
+								overlay_gallery : true,
+								autoplay_slideshow : false,
+								slideshow : 5000, /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+								theme : 'pp_default',
+								opacity : 0.8,
+								show_title : true,
+								deeplinking : false,
+								allow_resize : true, /* Resize the photos bigger than viewport. true/false */
+								counter_separator_label : '/', /* The separator for the gallery counter 1 "of" 2 */
+								default_width : 1200,
+								default_height : 640
+							};
+
+							jQuery("a[rel^='prettyPhoto']").prettyPhoto(
+									lightboxArgs);
+
+							var windowWidth = window.screen.width < window.outerWidth ? window.screen.width
+									: window.outerWidth;
+							var mobile = windowWidth < 500;
+
+							if (mobile) {
+								jQuery("a[rel^='prettyPhoto']").unbind(
+										'click.prettyphoto');
+							}
+						});
+
+	}(jQuery))
+</script>

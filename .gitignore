@@ -1,0 +1,4 @@
+vendor/
+.env
+.buildpath
+.settings
